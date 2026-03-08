@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact - {{ portfolio.name }}{% endblock %}
+
+{% block content %}
+<!-- Contact Hero -->
+<section class="page-hero py-5 bg-light">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">Get in Touch</h1>
+        <p class="lead text-muted">Let's discuss how we can work together</p>
+    </div>
+</section>
+
+<!-- Contact Content -->
+<section class="contact-section py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <div class="contact-form-wrapper">
+                    <h2 class="mb-4">Send Me a Message</h2>
+                    <form method="POST" class="contact-form">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            {{ form.name }}
+                            {% if form.name.errors %}
+                                <small class="text-danger d-block mt-1">{{ form.name.errors.0 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                                <small class="text-danger d-block mt-1">{{ form.email.errors.0 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.subject }}
+                            {% if form.subject.errors %}
+                                <small class="text-danger d-block mt-1">{{ form.subject.errors.0 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.message }}
+                            {% if form.message.errors %}
+                                <small class="text-danger d-block mt-1">{{ form.message.errors.0 }}</small>
+                            {% endif %}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="col-lg-5">
+                <div class="contact-info">
+                    <h2 class="mb-4">Contact Information</h2>
+                    
+                    <div class="contact-item mb-4">
+                        <h5 class="mb-2">
+                            <i class="fas fa-envelope text-primary"></i> Email
+                        </h5>
+                        <p>
+                            <a href="mailto:{{ portfolio.email }}">{{ portfolio.email }}</a>
+                        </p>
+                    </div>
+
+                    <div class="contact-item mb-4">
+                        <h5 class="mb-2">
+                            <i class="fas fa-phone text-primary"></i> Phone
+                        </h5>
+                        <p>
+                            {% for phone in portfolio.phone %}
+                                <a href="tel:{{ phone }}">{{ phone }}</a>
+                                {% if not forloop.last %}<br>{% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+
+                    <div class="contact-item mb-4">
+                        <h5 class="mb-2">
+                            <i class="fas fa-map-marker-alt text-primary"></i> Location
+                        </h5>
+                        <p>{{ portfolio.location }}</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h5 class="mb-3">
+                            <i class="fas fa-link text-primary"></i> Connect Online
+                        </h5>
+                        <div class="social-links-large">
+                            <a href="{{ portfolio.github }}" target="_blank" rel="noopener" class="social-icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="{{ portfolio.linkedin }}" target="_blank" rel="noopener" class="social-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="mailto:{{ portfolio.email }}" class="social-icon">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Response Time Notice -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="response-notice">
+                    <p class="mb-0">
+                        <i class="fas fa-info-circle"></i>
+                        I typically respond to messages within 24-48 hours. Looking forward to connecting with you!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

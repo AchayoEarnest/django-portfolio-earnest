@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About - {{ portfolio.name }}{% endblock %}
+
+{% block content %}
+<!-- About Hero -->
+<section class="page-hero py-5 bg-light">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">About Me</h1>
+        <p class="lead text-muted">Learn more about my journey and expertise</p>
+    </div>
+</section>
+
+<!-- About Content -->
+<section class="about-section py-5">
+    <div class="container">
+        <div class="row align-items-center mb-5">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <div class="profile-image-wrapper-about">
+                    <div class="profile-placeholder-about">
+                        <i class="fas fa-user-circle fa-7x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="mb-4">My Journey</h2>
+                <p class="mb-3">
+                    I'm a results-driven Data Analyst with a passion for transforming complex data into actionable insights. 
+                    With over 4 years of experience in healthcare and technology sectors, I've developed a deep expertise in 
+                    data management, analysis, and visualization.
+                </p>
+                <p class="mb-3">
+                    My career has been focused on building solutions that improve operational efficiency and drive strategic 
+                    decision-making. I believe in the power of data to tell stories and create meaningful impact.
+                </p>
+                <p>
+                    Beyond technical skills, I'm passionate about mentoring, problem-solving, and collaborating with 
+                    cross-functional teams to deliver excellence.
+                </p>
+            </div>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="row mt-5">
+            <div class="col-12 mb-4">
+                <h2 class="mb-4">Technical Proficiency</h2>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <h5 class="mb-3">Programming Languages</h5>
+                <div class="skill-tags">
+                    {% for skill in portfolio.skills.programming %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <h5 class="mb-3">Data Tools & Libraries</h5>
+                <div class="skill-tags">
+                    {% for skill in portfolio.skills.data_tools %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <h5 class="mb-3">Visualization Tools</h5>
+                <div class="skill-tags">
+                    {% for skill in portfolio.skills.visualization %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <h5 class="mb-3">Databases</h5>
+                <div class="skill-tags">
+                    {% for skill in portfolio.skills.databases %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <h5 class="mb-3">Health Systems & Platforms</h5>
+                <div class="skill-tags">
+                    {% for skill in portfolio.skills.systems %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <h5 class="mb-3">Tools & Methodologies</h5>
+                <div class="skill-tags">
+                    {% for skill in portfolio.skills.tools %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Soft Skills with Progress Bars -->
+        <div class="row mt-5">
+            <div class="col-12 mb-4">
+                <h2 class="mb-4">Core Competencies</h2>
+            </div>
+            {% for skill, level in portfolio.soft_skills %}
+                <div class="col-md-6 mb-4">
+                    <div class="skill-progress">
+                        <div class="d-flex justify-content-between mb-2">
+                            <h6 class="mb-0">{{ skill }}</h6>
+                            <span class="skill-level">{{ level }}%</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar" role="progressbar" style="width: {{ level }}%"></div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Core Competencies Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="mb-4">What I Bring to the Table</h2>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="competency-card">
+                            <h5><i class="fas fa-chart-line text-primary"></i> Data Analysis & Insight</h5>
+                            <p>Transform raw data into compelling narratives that drive strategic decisions.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="competency-card">
+                            <h5><i class="fas fa-cogs text-primary"></i> Automation & Efficiency</h5>
+                            <p>Build robust ETL pipelines and automated systems that save time and reduce errors.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="competency-card">
+                            <h5><i class="fas fa-code text-primary"></i> Software Development</h5>
+                            <p>Develop data-driven applications and REST APIs with clean, maintainable code.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="competency-card">
+                            <h5><i class="fas fa-users text-primary"></i> Team Collaboration</h5>
+                            <p>Work effectively with stakeholders, translate requirements, and communicate findings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Projects - {{ portfolio.name }}{% endblock %}
+
+{% block content %}
+<!-- Projects Hero -->
+<section class="page-hero py-5 bg-light">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">Featured Projects</h1>
+        <p class="lead text-muted">Showcasing data-driven solutions and technical implementations</p>
+    </div>
+</section>
+
+<!-- Projects Grid -->
+<section class="projects-section py-5">
+    <div class="container">
+        <div class="row">
+            {% for project in portfolio.projects %}
+            <div class="col-md-6 mb-4">
+                <div class="project-card h-100">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-folder-open fa-4x"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h4 class="project-title">{{ project.title }}</h4>
+                        <p class="project-description">{{ project.description }}</p>
+                        
+                        <div class="project-tools mb-3">
+                            {% for tool in project.tools %}
+                                <span class="tool-badge">{{ tool }}</span>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="{{ project.github }}" class="btn btn-sm btn-outline-primary" target="_blank">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Additional Projects Context -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="projects-note">
+                    <h5>More Projects Available</h5>
+                    <p>
+                        For additional projects, code samples, and contributions, visit my 
+                        <a href="https://github.com/AchayoEarnest" target="_blank" rel="noopener">GitHub profile</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project Categories -->
+<section class="project-categories py-5 bg-light">
+    <div class="container">
+        <h2 class="mb-4 text-center">Areas of Focus</h2>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="category-card">
+                    <h5><i class="fas fa-chart-bar"></i> Data Visualization</h5>
+                    <p>Creating compelling dashboards and visual representations of complex data using Power BI, Tableau, and Python visualization libraries.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="category-card">
+                    <h5><i class="fas fa-cogs"></i> ETL & Automation</h5>
+                    <p>Building robust data pipelines and automated workflows that ensure data quality and efficiency across systems.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="category-card">
+                    <h5><i class="fas fa-database"></i> Data Engineering</h5>
+                    <p>Designing optimized database schemas, managing queries, and implementing solutions for healthcare and tech systems.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

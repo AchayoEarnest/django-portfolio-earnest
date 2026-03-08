@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Resume - {{ portfolio.name }}{% endblock %}
+
+{% block content %}
+<!-- Resume Hero -->
+<section class="page-hero py-5 bg-light">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">Resume & Certifications</h1>
+        <p class="lead text-muted">Professional qualifications and educational background</p>
+    </div>
+</section>
+
+<!-- Resume Content -->
+<section class="resume-section py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Certifications -->
+            <div class="col-md-6 mb-5">
+                <h2 class="section-title mb-4">
+                    <i class="fas fa-certificate"></i> Certifications
+                </h2>
+                
+                {% for cert in portfolio.certifications %}
+                <div class="resume-item mb-3">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="mb-1">{{ cert.name }}</h5>
+                            <p class="text-muted mb-0">{{ cert.issuer }}</p>
+                        </div>
+                        <span class="badge badge-primary">{{ cert.year }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Education -->
+            <div class="col-md-6 mb-5">
+                <h2 class="section-title mb-4">
+                    <i class="fas fa-graduation-cap"></i> Education
+                </h2>
+                
+                {% for edu in portfolio.education %}
+                <div class="resume-item mb-3">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="mb-1">{{ edu.degree }}</h5>
+                            <p class="text-muted mb-0">{{ edu.school }}</p>
+                        </div>
+                        <span class="badge badge-secondary">{{ edu.year }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Core Competencies Summary -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="section-title mb-4">
+                    <i class="fas fa-star"></i> Core Competencies
+                </h2>
+                <div class="competencies-grid">
+                    <div class="competency-item">
+                        <strong>Data Analysis & Statistical Modeling</strong>
+                    </div>
+                    <div class="competency-item">
+                        <strong>Data Visualization & Dashboard Development</strong>
+                    </div>
+                    <div class="competency-item">
+                        <strong>SQL Database Management & Queries</strong>
+                    </div>
+                    <div class="competency-item">
+                        <strong>Python Programming for Data Science</strong>
+                    </div>
+                    <div class="competency-item">
+                        <strong>Data Quality Assurance & Validation</strong>
+                    </div>
+                    <div class="competency-item">
+                        <strong>ETL Process Development & Automation</strong>
+                    </div>
+                    <div class="competency-item">
+                        <strong>Business Intelligence & Reporting</strong>
+                    </div>
+                    <div class="competency-item">
+                        <strong>Data-Driven Decision Support</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download CV Button -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <p class="text-muted mb-3">Want the full resume?</p>
+                <a href="https://drive.google.com/file/d/example" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                    <i class="fas fa-download"></i> Download CV (PDF)
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Stats -->
+<section class="resume-stats py-5 bg-light">
+    <div class="container">
+        <h2 class="mb-4 text-center">By The Numbers</h2>
+        <div class="row text-center">
+            <div class="col-md-3 mb-3">
+                <div class="stat-box">
+                    <h3>4+</h3>
+                    <p>Years in Data Analytics</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="stat-box">
+                    <h3>15+</h3>
+                    <p>Database Projects</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="stat-box">
+                    <h3>20+</h3>
+                    <p>Staff Trained</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="stat-box">
+                    <h3>100%</h3>
+                    <p>Project Delivery Rate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

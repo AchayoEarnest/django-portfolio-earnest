@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Experience - {{ portfolio.name }}{% endblock %}
+
+{% block content %}
+<!-- Experience Hero -->
+<section class="page-hero py-5 bg-light">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">Professional Experience</h1>
+        <p class="lead text-muted">4+ years of progressive experience in data analytics and software engineering</p>
+    </div>
+</section>
+
+<!-- Experience Timeline -->
+<section class="experience-section py-5">
+    <div class="container">
+        <div class="timeline">
+            {% for job in portfolio.experience %}
+            <div class="timeline-item" data-year="{{ job.period }}">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="experience-card">
+                        <div class="card-header">
+                            <h3 class="position">{{ job.position }}</h3>
+                            <p class="company">{{ job.company }}</p>
+                            <p class="period"><i class="fas fa-calendar-alt"></i> {{ job.period }}</p>
+                        </div>
+                        
+                        <div class="card-body">
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> {{ job.location }}</p>
+                            
+                            <h5 class="mb-3">Key Achievements:</h5>
+                            <ul class="achievements-list">
+                                {% for achievement in job.achievements %}
+                                <li>{{ achievement }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Summary Stats -->
+<section class="experience-summary py-5 bg-light">
+    <div class="container">
+        <h2 class="mb-4 text-center">Impact Summary</h2>
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <div class="impact-card">
+                    <h3>60%</h3>
+                    <p>Processing Time Reduction</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="impact-card">
+                    <h3>96%</h3>
+                    <p>Data Accuracy Achieved</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="impact-card">
+                    <h3>5000+</h3>
+                    <p>Users Impacted</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="impact-card">
+                    <h3>35%</h3>
+                    <p>Service Delivery Improvement</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
