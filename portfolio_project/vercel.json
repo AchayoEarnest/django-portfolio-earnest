@@ -1,12 +1,20 @@
 {
-  "builds": [
-    {
-      "src": "portfolio_project/wsgi.py",
-      "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.13.5" }
+  "buildCommand": "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate",
+  "outputDirectory": "staticfiles",
+  "env": {
+    "PYTHONUNBUFFERED": "1"
+  },
+  "functions": {
+    "portfolio_project/wsgi.py": {
+      "memory": 3008,
+      "maxDuration": 60
     }
-  ],
+  },
   "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "portfolio_project/wsgi.py"
